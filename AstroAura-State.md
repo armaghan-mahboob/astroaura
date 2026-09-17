@@ -16,11 +16,11 @@ Preparing landing-page components.
 
 ## Next
 
-**Fixed/Sticky Navbar** → then Hero.
+Hero section.
 
 ## Planned Order
 
-Navbar → Hero → Features → Tarot → Global Trust → Global Use Cases → Testimonials → Blog Strip → Mobile App → UAA → FAQ → Footer
+Hero → Features → Tarot → Global Trust → Global Use Cases → Testimonials → Blog Strip → Mobile App → UAA → FAQ → Footer
 
 ## Issues
 
