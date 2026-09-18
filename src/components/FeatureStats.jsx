@@ -11,7 +11,7 @@ function FeatureStats() {
     <div className="relative overflow-hidden py-8">
       {/* Top Gradient Border Line */}
       <div
-        className="absolute top-0 left-0 right-0 h-[1px]"
+        className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
             "linear-gradient(90deg, #0000, #ff8c428c 28%, #ff2e9399 50%, #ff8c428c 72%, #0000)",
@@ -44,7 +44,7 @@ function FeatureStats() {
 
       {/* Bottom Gradient Border Line */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-[1px]"
+        className="absolute bottom-0 left-0 right-0 h-px"
         style={{
           background:
             "linear-gradient(90deg, #0000, #ff8c428c 28%, #ff2e9399 50%, #ff8c428c 72%, #0000)",

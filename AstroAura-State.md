@@ -17,11 +17,11 @@ Landing page in progress.
 
 ## Current
 
-Hero section fully complete (Navbar + Left + Right + Planets).
+Features section
 
 ## Next
 
-Features section.
+Taror section
 
 ## Planned Order
 
@@ -43,4 +43,5 @@ None.
 - Background image at public/hero-bg.png.
 - Planets use pre-rotating .webp assets (no CSS spin animation) at public/planets/\*.webp, positioned via percentage coordinates sampled from the curve's bezier path.
 - Hero content wrapper (Navbar + Left/Right) uses pointer-events-none/auto split so empty space doesn't block hover/clicks on planets underneath.
-- body background set to brand purple (#5E155F) as a backstop against overflow flashing white.
+- body background set to cosmic.
+- Fixed all layout issues (verify against GitHub code)

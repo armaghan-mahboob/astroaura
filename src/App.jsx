@@ -15,10 +15,10 @@ function App() {
       />
 
       {/* 2. Soft Purple Glow - Fixed to viewport */}
-      <div className="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[600px] rounded-full bg-purple-600/20 blur-[120px] pointer-events-none" />
+      <div className="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-125 w-150 rounded-full bg-purple-600/20 blur-[120px] pointer-events-none" />
 
       {/* 3. Soft Pink Glow - Fixed to viewport */}
-      <div className="fixed top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[500px] rounded-full bg-pink-600/15 blur-[140px] pointer-events-none" />
+      <div className="fixed top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-100 w-125 rounded-full bg-pink-600/15 blur-[140px] pointer-events-none" />
 
       {/* 4. Starfield Tile Pattern - Fixed to viewport */}
       <div
