@@ -13,14 +13,15 @@ Landing page in progress.
 - Hero background (image + blur/overlay + curved bottom edge)
 - Hero left section (rating badge, heading with cycling text, checklist, CTA)
 - Hero right section (rotating chat UI mockup)
+- Hero planets (9 planets positioned along curve, pre-animated .webp assets, hover lift effect)
 
 ## Current
 
-Hero section core layout complete (Navbar + Left + Right). Spinning planet GIFs along the curved bottom edge not yet implemented.
+Hero section fully complete (Navbar + Left + Right + Planets).
 
 ## Next
 
-Planets (spinning GIFs positioned along/below the hero's curved bottom edge), then Features section.
+Features section.
 
 ## Planned Order
 
@@ -35,8 +36,11 @@ None.
 - JS/JSX only.
 - Build one component at a time from reference images.
 - GitHub repository is implementation source of truth.
-- Hero split into Navbar.jsx, LeftHero.jsx, RightHero.jsx, composed in Hero.jsx.
+- Hero split into Navbar.jsx, LeftHero.jsx, RightHero.jsx, Planets.jsx, composed in Hero.jsx.
 - Hero uses flexbox (not grid) for Left/Right layout so sections size to content instead of fixed column fractions.
 - Cycling text/content (LeftHero heading, RightHero conversations) done via useState + setInterval + opacity fade, no animation libraries.
 - Icons are inline SVG, no icon library added.
 - Background image at public/hero-bg.png.
+- Planets use pre-rotating .webp assets (no CSS spin animation) at public/planets/\*.webp, positioned via percentage coordinates sampled from the curve's bezier path.
+- Hero content wrapper (Navbar + Left/Right) uses pointer-events-none/auto split so empty space doesn't block hover/clicks on planets underneath.
+- body background set to brand purple (#5E155F) as a backstop against overflow flashing white.
