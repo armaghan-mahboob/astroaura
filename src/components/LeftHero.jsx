@@ -49,7 +49,7 @@ function LeftHero() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col items-center gap-5 text-center lg:items-start lg:text-left">
       {/* Badge: Sized up to text-sm */}
       <div className="flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-sm text-white/90 backdrop-blur-sm">
         <span className="text-yellow-400">★★★★★</span>

@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
 body {
-  background-color: #5e155f;
+  background: linear-gradient(180deg, #4c065f 0%, #700547 100%);
+  background-attachment: fixed;
+  color: #ffffff;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(-20%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

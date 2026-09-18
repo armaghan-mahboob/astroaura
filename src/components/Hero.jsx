@@ -4,39 +4,44 @@ import RightHero from "./RightHero";
 import Planets from "./Planets";
 
 function Hero() {
+  // Reduced height from 900 to 750 to compress the background height and reduce the gap
+  const maskSVG = `url("data:image/svg+xml,%3Csvg width='1440' height='750' viewBox='0 0 1440 750' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 L1440,0 L1440,520 C1080,750 360,750 0,520 Z' fill='black'/%3E%3C/svg%3E")`;
+
   return (
-    <section className="relative min-h-screen overflow-x-hidden">
-      {/* Background image container with blur and fade — overflow-hidden scoped here so the scaled bg doesn't leak, without clipping planets below */}
-      <div className="absolute inset-0 overflow-hidden">
+    <section className="relative w-full pb-16 flex flex-col justify-between">
+      {/* Background Masked Container with reduced height */}
+      {/* Background Masked Container */}
+      <div
+        className="absolute inset-x-0 top-0 h-[clamp(600px,52vw,750px)] pointer-events-none overflow-hidden"
+        style={{
+          maskImage: maskSVG,
+          maskSize: "100% 100%",
+          maskPosition: "center",
+          maskRepeat: "no-repeat",
+          WebkitMaskImage: maskSVG,
+          WebkitMaskSize: "100% 100%",
+          WebkitMaskPosition: "center",
+          WebkitMaskRepeat: "no-repeat",
+        }}
+      >
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat  opacity-70 scale-130"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
           style={{ backgroundImage: "url('/hero-bg.png')" }}
         />
-      </div>
-      {/* Dark overlay fading into brand purple at the bottom */}
-      <div className="absolute inset-0 bg-linear-to-b from-black/90 via-black/20 to-black/10" />
-      {/* Curved bottom edge */}
-      <svg
-        className="absolute bottom-0 left-0 w-full text-[#5E155F]"
-        viewBox="0 0 1440 300"
-        preserveAspectRatio="none"
-        fill="currentColor"
-      >
-        <path d="M0,50 C360,300 1080,300 1440,50 L1440,300 L0,300 Z" />
-      </svg>
-      <Planets />
-      <div className="relative z-10 pointer-events-none">
-        <div className="pointer-events-auto">
-          <Navbar />
-        </div>
 
-        <div className="pointer-events-auto mx-auto max-w-7xl px-4 pt-30 pb-20 sm:px-6 lg:px-10">
-          <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-start lg:justify-center lg:gap-20">
-            <LeftHero />
-            <RightHero />
-          </div>
+        <div className="absolute inset-0 bg-linear-to-b from-black/90 via-black/20 to-black/10" />
+      </div>
+
+      <Navbar />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-34 pb-8 sm:px-6 lg:px-10 pointer-events-none w-full">
+        <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-start lg:justify-center lg:gap-10 pointer-events-auto">
+          <LeftHero />
+          <RightHero />
         </div>
       </div>
+
+      <Planets />
     </section>
   );
 }
