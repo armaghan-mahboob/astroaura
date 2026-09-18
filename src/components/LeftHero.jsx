@@ -62,7 +62,7 @@ function LeftHero() {
       <div className="flex flex-col gap-1.5">
         <h1 className="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
           AI Astrology,
-          <span className="bg-linear-to-r from-pink-400 to-orange-300 bg-clip-text text-transparent">
+          <span className="bg-[linear-gradient(180deg,#fff,#ffccfd)] bg-clip-text text-transparent">
             {` Answered`}
           </span>
         </h1>
@@ -70,7 +70,7 @@ function LeftHero() {
           Ask Aura AI about your life's
           <br />
           <span
-            className={`bg-linear-to-r from-pink-400 to-orange-300 bg-clip-text text-transparent transition-opacity duration-300 ${
+            className={`bg-[linear-gradient(180deg,#fff,#ffccfd)] bg-clip-text text-transparent transition-opacity duration-300 ${
               fade ? "opacity-100" : "opacity-0"
             }`}
           >

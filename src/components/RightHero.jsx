@@ -80,7 +80,7 @@ function RightHero() {
   const { question, answers } = conversations[index];
 
   return (
-    <div className="w-full max-w-md rounded-2xl border border-white/10 bg-black/50 shadow-[0_0_40px_rgba(168,60,255,0.15)] backdrop-blur-md">
+    <div className="w-full max-w-md -mt-8 rounded-2xl border border-white/10 bg-black/50 shadow-[0_0_40px_rgba(168,60,255,0.15)] backdrop-blur-md">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
         <div className="flex items-center gap-2">
