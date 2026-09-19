@@ -11,14 +11,15 @@
 1. Hero
 2. Features
 3. Tarot
-4. Global Trust
-5. Global Use Cases
-6. Testimonials
-7. Blog Strip
-8. Mobile App
-9. Understand AI Astrology (UAA)
-10. FAQ
-11. Footer
+4. Kundli
+5. Global Trust
+6. Global Use Cases
+7. Testimonials
+8. Blog Strip
+9. Mobile App
+10. Understand AI Astrology (UAA)
+11. FAQ
+12. Footer
 
 ## UI Rules
 
