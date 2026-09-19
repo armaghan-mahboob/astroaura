@@ -1,5 +1,7 @@
 import Hero from "./components/Hero";
 import Features from "./components/Features";
+import Tarot from "./components/Tarot";
+// import TarotAudit from "./components/TarotAudit";
 
 function App() {
   return (
@@ -44,6 +46,8 @@ function App() {
       <div className="relative z-10 flex flex-col">
         <Hero />
         <Features />
+        <Tarot />
+        {/* <TarotAudit /> */}
       </div>
     </div>
   );
