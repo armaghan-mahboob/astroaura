@@ -18,14 +18,15 @@ Landing page in progress.
 - Testimonials section
 - Blog Strip section
 - Mobile App section
+- Understand AI Astrology (UAA) section
 
 ## Current
 
-Mobile App section completed.
+UAA section completed.
 
 ## Next
 
-Understand AI Astrology (UAA).
+FAQ.
 
 ## Planned Order
 
@@ -72,3 +73,6 @@ None.
 - MobileApp.jsx contains its subcomponents (StoreButton, DeviceStack, icons) in one file.
 - Device stack uses absolute positioning with inline-computed `transform`/`zIndex`, not stacked Tailwind transform classes.
 - Hover-to-front/scale effect on device stack is desktop-only (`matchMedia` gated at the `lg` breakpoint) to prevent tap-triggered hover states on touch devices.
+- UAA.jsx contains all its subcomponents (badges, steps, topic cards, checklist) in one file, built across 3 reference images in stacked card sections.
+- UAA topic grid ("What Can You Ask") is 1/2/3 columns at mobile/tablet/desktop.
+- UAA "Why Choose Aura AI" checklist is a flat 2-column grid (left items then right items), 1 column on mobile.
