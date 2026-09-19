@@ -16,14 +16,15 @@ Landing page in progress.
 - Hero planets (9 planets positioned along curve, pre-animated .webp assets, hover lift effect)
 - Features section (heading, marquee stats, feature carousel)
 - Tarot section: heading/subtext/input, 3 selected-card slots (responsive), 78-card overlapping deck with hover pop, select/remove/compaction logic, real front-face card art (full 78-card Rider-Waite-Smith deck sourced and integrated), Get Reading / Shuffle Again buttons with count-based states
+- Kundli section: heading + orbit icon divider, New/Saved tab switcher (local state, gradient pill on active tab), New Kundli form (Name, Gender, Birth Date, Birth Time with "don't know" toggle, Birth Place, disabled submit CTA), Saved Kundli tab hard-coded to "No saved Kundli found. Please create a new Kundli." (no persistence logic yet), custom dropdown component replacing native `<select>`, multi-layer box-shadow on form container matching reference
 
 ## Current
 
-Kundli section.
+Global Trust section.
 
 ## Next
 
-Kundli section.
+Global Trust section.
 
 ## Planned Order
 
@@ -53,3 +54,8 @@ None.
 - Tarot selection state is an ordered array of { id, reversed } in Tarot.jsx; index position maps directly to Past/Present/Future slots, so removing an item naturally compacts the array.
 - Reversed status is randomized (~50%) per selection; reversed only affects badge/meaning text and image is never rotated.
 - Shuffle Again clears the current selection (available once count > 0); "Get free reading" only enables at 3/3 chosen. Reading logic itself not yet implemented.
+- Kundli.jsx holds all kundli subcomponents (OrbitIcon, CustomSelect, Field, TextInput, NewKundliForm, SavedKundli) in one file, per "avoid excessive abstraction."
+- Kundli uses a custom dropdown (CustomSelect) instead of native `<select>` for full style control over the popup menu (gradient background, custom scrollbar, hover states) — click-outside-to-close via ref + mousedown listener.
+- Kundli form fields wrap via flex-wrap with explicit width classes (sm:w-[calc(50%-12px)], lg:w-[calc(33.333%-16px)]) rather than a grid, to keep gap spacing consistent with the flex-based birth-date/time sub-rows.
+- "Don't know your birth time" checkbox disables and blurs the time selects instead of removing them.
+- Saved Kundli tab is a static hard-coded message only; no save/load functionality implemented yet.

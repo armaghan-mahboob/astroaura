@@ -1,6 +1,7 @@
 import Hero from "./components/Hero";
 import Features from "./components/Features";
 import Tarot from "./components/Tarot";
+import Kundli from "./components/Kundli";
 // import TarotAudit from "./components/TarotAudit";
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Features />
         <Tarot />
         {/* <TarotAudit /> */}
+        <Kundli />
       </div>
     </div>
   );
