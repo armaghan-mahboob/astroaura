@@ -4,6 +4,7 @@ import Tarot from "./components/Tarot";
 import Kundli from "./components/Kundli";
 import GlobalTrust from "./components/GlobalTrust";
 import GlobalUseCases from "./components/GlobalUseCases";
+import Testimonials from "./components/Testimonials";
 // import TarotAudit from "./components/TarotAudit";
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
         <Kundli />
         <GlobalTrust />
         <GlobalUseCases />
+        <Testimonials />
       </div>
     </div>
   );

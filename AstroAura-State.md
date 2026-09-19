@@ -15,14 +15,15 @@ Landing page in progress.
 - Kundli section
 - Global Trust section
 - Global Use Cases section
+- Testimonials section
 
 ## Current
 
-Global Use Cases section completed.
+Testimonials section completed.
 
 ## Next
 
-Testimonials.
+Blog Strip.
 
 ## Planned Order
 
@@ -65,3 +66,6 @@ None.
 - Desktop auto-cycle: 5s interval, hover immediately opens that panel and pauses the cycle, leaving resumes the cycle from the hovered panel.
 - Desktop panel text reveal uses a nested grid (`grid-cols-[0fr]/[1fr]`) with an outer `min-w-0` wrapper (lets the track collapse to 0) and an inner `min-w-max` wrapper (keeps text at fixed intrinsic width so it clips/reveals instead of reflowing).
 - Mobile accordion has fully independent state from desktop; no auto-cycle, no shared timer, tap-to-open/close only.
+- Testimonials.jsx uses requestAnimationFrame marquee (same seamless 3x-loop pattern as Global Trust), but never pauses on hover.
+- Testimonials avatars are CSS initials-on-gradient-circle (no image assets yet); dummy quote/name data lives in-file.
+- Testimonial card hover uses a direct border-color + box-shadow glow on the card itself (no separate blurred glow element).
