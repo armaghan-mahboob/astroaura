@@ -14,14 +14,15 @@ Landing page in progress.
 - Tarot section
 - Kundli section
 - Global Trust section
+- Global Use Cases section
 
 ## Current
 
-Global Trust section completed.
+Global Use Cases section completed.
 
 ## Next
 
-Global Use Cases.
+Testimonials.
 
 ## Planned Order
 
@@ -58,3 +59,9 @@ None.
 - Global Trust cards use position-based 3D perspective transforms (`rotateY`, `rotateX`, `scale`) based on distance from center.
 - Global Trust cards flatten at center and gradually tilt/scale toward the edges.
 - Global Trust animation uses JavaScript + requestAnimationFrame + CSS transforms; no animation library.
+- GlobalUseCases.jsx contains its subcomponents (PanelContent, DesktopPanel, MobilePanel) in one file.
+- GlobalUseCases uses dummy image/text data in-file; real data to be swapped in later.
+- Desktop accordion uses CSS `flex-grow` transitions for panel width, driven by a self-rescheduling `setTimeout` (not `setInterval`) plus a `pausedRef` for hover pause/resume.
+- Desktop auto-cycle: 5s interval, hover immediately opens that panel and pauses the cycle, leaving resumes the cycle from the hovered panel.
+- Desktop panel text reveal uses a nested grid (`grid-cols-[0fr]/[1fr]`) with an outer `min-w-0` wrapper (lets the track collapse to 0) and an inner `min-w-max` wrapper (keeps text at fixed intrinsic width so it clips/reveals instead of reflowing).
+- Mobile accordion has fully independent state from desktop; no auto-cycle, no shared timer, tap-to-open/close only.

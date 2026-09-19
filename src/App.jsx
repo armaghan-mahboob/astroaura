@@ -3,6 +3,7 @@ import Features from "./components/Features";
 import Tarot from "./components/Tarot";
 import Kundli from "./components/Kundli";
 import GlobalTrust from "./components/GlobalTrust";
+import GlobalUseCases from "./components/GlobalUseCases";
 // import TarotAudit from "./components/TarotAudit";
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
         {/* <TarotAudit /> */}
         <Kundli />
         <GlobalTrust />
+        <GlobalUseCases />
       </div>
     </div>
   );
