@@ -6,6 +6,7 @@ import GlobalTrust from "./components/GlobalTrust";
 import GlobalUseCases from "./components/GlobalUseCases";
 import Testimonials from "./components/Testimonials";
 import BlogStrip from "./components/BlogStrip";
+import MobileApp from "./components/MobileApp";
 // import TarotAudit from "./components/TarotAudit";
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
         <GlobalUseCases />
         <Testimonials />
         <BlogStrip />
+        <MobileApp />
       </div>
     </div>
   );

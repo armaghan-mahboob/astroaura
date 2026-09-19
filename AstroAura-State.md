@@ -17,14 +17,15 @@ Landing page in progress.
 - Global Use Cases section
 - Testimonials section
 - Blog Strip section
+- Mobile App section
 
 ## Current
 
-Blog Strip section completed.
+Mobile App section completed.
 
 ## Next
 
-Mobile App.
+Understand AI Astrology (UAA).
 
 ## Planned Order
 
@@ -68,3 +69,6 @@ None.
 - BlogStrip desktop card width uses `calc((100%-60px)/4)` so exactly 4 cards fill the row regardless of screen width, with extra cards revealed by scrolling.
 - BlogStrip mobile uses fixed `w-72` peek-carousel width (partial next card visible), matching reference.
 - BlogStrip dummy data/images live in-file; real posts to be swapped in later.
+- MobileApp.jsx contains its subcomponents (StoreButton, DeviceStack, icons) in one file.
+- Device stack uses absolute positioning with inline-computed `transform`/`zIndex`, not stacked Tailwind transform classes.
+- Hover-to-front/scale effect on device stack is desktop-only (`matchMedia` gated at the `lg` breakpoint) to prevent tap-triggered hover states on touch devices.
