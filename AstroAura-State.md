@@ -16,14 +16,15 @@ Landing page in progress.
 - Global Trust section
 - Global Use Cases section
 - Testimonials section
+- Blog Strip section
 
 ## Current
 
-Testimonials section completed.
+Blog Strip section completed.
 
 ## Next
 
-Blog Strip.
+Mobile App.
 
 ## Planned Order
 
@@ -55,17 +56,15 @@ None.
 - Kundli uses custom dropdowns instead of native select.
 - Saved Kundli currently has no persistence.
 - Global Trust marquee uses requestAnimationFrame and position-based CSS transforms; no animation library.
-- Global Trust marquee uses requestAnimationFrame for continuous infinite horizontal scrolling.
 - Global Trust hover pauses/resumes the marquee.
 - Global Trust cards use position-based 3D perspective transforms (`rotateY`, `rotateX`, `scale`) based on distance from center.
-- Global Trust cards flatten at center and gradually tilt/scale toward the edges.
-- Global Trust animation uses JavaScript + requestAnimationFrame + CSS transforms; no animation library.
 - GlobalUseCases.jsx contains its subcomponents (PanelContent, DesktopPanel, MobilePanel) in one file.
 - GlobalUseCases uses dummy image/text data in-file; real data to be swapped in later.
-- Desktop accordion uses CSS `flex-grow` transitions for panel width, driven by a self-rescheduling `setTimeout` (not `setInterval`) plus a `pausedRef` for hover pause/resume.
-- Desktop auto-cycle: 5s interval, hover immediately opens that panel and pauses the cycle, leaving resumes the cycle from the hovered panel.
-- Desktop panel text reveal uses a nested grid (`grid-cols-[0fr]/[1fr]`) with an outer `min-w-0` wrapper (lets the track collapse to 0) and an inner `min-w-max` wrapper (keeps text at fixed intrinsic width so it clips/reveals instead of reflowing).
-- Mobile accordion has fully independent state from desktop; no auto-cycle, no shared timer, tap-to-open/close only.
+- Desktop accordion uses CSS `flex-grow` transitions driven by a self-rescheduling `setTimeout` plus a `pausedRef` for hover pause/resume.
+- Mobile accordion has fully independent state from desktop; tap-to-open/close only, no auto-cycle.
 - Testimonials.jsx uses requestAnimationFrame marquee (same seamless 3x-loop pattern as Global Trust), but never pauses on hover.
-- Testimonials avatars are CSS initials-on-gradient-circle (no image assets yet); dummy quote/name data lives in-file.
-- Testimonial card hover uses a direct border-color + box-shadow glow on the card itself (no separate blurred glow element).
+- Testimonials avatars are CSS initials-on-gradient-circle; dummy quote/name data lives in-file.
+- BlogStrip.jsx uses horizontal scroll (snap-x, overflow-x-auto), not a marquee — user-driven scroll, not auto-play.
+- BlogStrip desktop card width uses `calc((100%-60px)/4)` so exactly 4 cards fill the row regardless of screen width, with extra cards revealed by scrolling.
+- BlogStrip mobile uses fixed `w-72` peek-carousel width (partial next card visible), matching reference.
+- BlogStrip dummy data/images live in-file; real posts to be swapped in later.
