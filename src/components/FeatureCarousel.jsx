@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+
 function HeartIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -105,43 +107,126 @@ const cards = [
 ];
 
 function FeatureCarousel() {
+  const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const scrollToIndex = (index) => {
+    const container = scrollRef.current;
+    const cardEl = container?.children[index];
+    if (cardEl && container) {
+      const scrollLeft =
+        cardEl.offsetLeft - (container.clientWidth - cardEl.offsetWidth) / 2;
+      container.scrollTo({ left: scrollLeft, behavior: "smooth" });
+    }
+  };
+
+  // Keep dots synced with whatever card is actually centered/leading in view
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const cardEls = container.children;
+      if (!cardEls.length) return;
+
+      const target = container.scrollLeft + container.clientWidth / 2;
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      Array.from(cardEls).forEach((el, i) => {
+        const cardCenter = el.offsetLeft + el.offsetWidth / 2;
+        const distance = Math.abs(cardCenter - target);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = i;
+        }
+      });
+
+      setActiveIndex(closestIndex);
+    };
+
+    container.addEventListener("scroll", handleScroll, { passive: true });
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Single autoplay timer, mobile-only, loops back to the first card
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!window.matchMedia("(max-width: 639px)").matches) return;
+
+      setActiveIndex((prev) => {
+        const nextIndex = (prev + 1) % cards.length;
+        scrollToIndex(nextIndex);
+        return nextIndex;
+      });
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="no-scrollbar flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-4 pb-4 sm:px-6 lg:px-10">
-      {cards.map((card) => (
-        <div
-          key={card.title}
-          className="relative flex h-40 w-70 shrink-0 snap-start overflow-hidden rounded-3xl border border-white/10 sm:h-50 sm:w-76"
-        >
-          {/* Background image */}
-          <img
-            src={card.img}
-            alt={card.title}
-            className="absolute inset-0 h-full w-full object-cover object-right"
-          />
+    <div>
+      <div
+        ref={scrollRef}
+        className="no-scrollbar flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-[calc(50vw-128px)] sm:snap-none sm:px-6 sm:scroll-px-6 lg:px-10 lg:scroll-px-10 sm:py-5"
+      >
+        {cards.map((card) => (
+          <div
+            key={card.title}
+            className="group relative flex h-40 w-64 shrink-0 snap-center rounded-3xl border border-white/10 transition-transform duration-300 ease-out sm:h-55 sm:w-76 sm:snap-start sm:hover:-translate-y-2 hover:cursor-pointer"
+          >
+            {/* Hover glow (desktop only) — outside overflow mask */}
+            <div className="pointer-events-none absolute inset-0 -z-10 rounded-3xl opacity-0 shadow-[0_0_15px_rgba(255,60,120,0.25)] transition-opacity duration-300 sm:group-hover:opacity-100" />
 
-          {/* Left-focused gradient overlay */}
-          <div className="absolute inset-0 bg-linear-to-r from-[#1a0a2e] via-[#1a0a2e]/20 to-transparent" />
+            {/* Inner card content wrapper with rounded clipping */}
+            <div className="relative flex h-full w-full overflow-hidden rounded-3xl">
+              {/* Background image */}
+              <img
+                src={card.img}
+                alt={card.title}
+                className="absolute inset-0 h-full w-full object-cover object-right"
+              />
 
-          {/* Content block: removed justify-between and applied uniform flex-col gap-3 */}
-          <div className="relative z-10 flex h-full max-w-[58%] flex-col justify-center p-4 gap-3">
-            <h3 className="text-base font-bold leading-tight text-white sm:text-xl">
-              {card.title}
-            </h3>
+              {/* Left-focused gradient overlay */}
+              <div className="absolute inset-0 bg-linear-to-r from-[#1a0a2e] via-[#1a0a2e]/20 to-transparent" />
 
-            <p className="text-sm leading-snug text-white">
-              {card.description}
-            </p>
+              {/* Content block */}
+              <div className="relative z-10 flex h-full max-w-[62%] flex-col justify-center gap-2.5 p-3 sm:max-w-[58%] sm:gap-3 sm:p-4">
+                <h3 className="text-sm font-bold leading-tight text-white sm:text-xl">
+                  {card.title}
+                </h3>
 
-            <button
-              type="button"
-              className="flex w-fit items-center gap-1.5 rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-7 py-3 text-[11px] font-semibold text-white shadow-[0_0_12px_rgba(255,60,120,0.35)] transition-transform hover:scale-105"
-            >
-              <card.icon className="h-3 w-3" />
-              Ask Aura AI
-            </button>
+                <p className="text-xs leading-snug text-white sm:text-sm">
+                  {card.description}
+                </p>
+
+                <button
+                  type="button"
+                  className="flex w-fit items-center gap-1.5 rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-5 py-2.5 text-[10px] font-semibold text-white shadow-[0_0_12px_rgba(255,60,120,0.35)] transition-transform hover:scale-105 sm:px-7 sm:py-3 sm:text-[11px]"
+                >
+                  <card.icon className="h-3 w-3" />
+                  Ask Aura AI
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      {/* Dot indicators — mobile only */}
+      <div className="mt-3 flex justify-center gap-2 sm:hidden">
+        {cards.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => scrollToIndex(i)}
+            aria-label={`Go to card ${i + 1}`}
+            className={`h-2 w-2 rounded-full transition-colors ${
+              i === activeIndex ? "bg-pink-500" : "bg-white/25"
+            }`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
