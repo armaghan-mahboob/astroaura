@@ -134,8 +134,8 @@ function FooterCTA() {
 function BrandBlock() {
   return (
     <div className="flex flex-col items-center gap-4 text-center lg:items-start lg:text-left">
-      <a href="#" className="flex items-center gap-2">
-        <img src="/favicon.svg" alt="Aura AI" className="h-9 w-9" />
+      <a href="#" className="flex items-center">
+        <img src="/favicon.png" alt="Aura AI" className="h-12 w-18" />
         <span className="text-xl font-bold text-white">Aura AI</span>
       </a>
 
@@ -168,7 +168,7 @@ function FooterLinkGroup({ heading, links }) {
   return (
     <div>
       <h3 className="text-base font-bold text-white">{heading}</h3>
-      <ul className="mt-4 flex flex-col gap-3">
+      <ul className="mt-4 flex flex-col gap-1">
         {links.map((link) => (
           <li key={link}>
             <a href="#" className="text-sm text-white/60 hover:text-white">
@@ -182,30 +182,21 @@ function FooterLinkGroup({ heading, links }) {
 }
 
 function DesktopLinks() {
-  const columns = [
-    [footerColumns[0], footerColumns[3]],
-    [footerColumns[1], footerColumns[4]],
-    [footerColumns[2], footerColumns[5]],
-  ];
-
   return (
-    <div className="hidden lg:grid lg:grid-cols-4 lg:gap-10">
-      <BrandBlock />
-      {columns.map((pair, i) => (
-        <div key={i} className="flex flex-col gap-10">
-          {pair.map((group) => (
-            <FooterLinkGroup
-              key={group.heading}
-              heading={group.heading}
-              links={group.links}
-            />
-          ))}
-        </div>
+    <div className="hidden lg:grid lg:grid-cols-4 lg:gap-x-10 lg:gap-y-10">
+      <div className="row-span-2">
+        <BrandBlock />
+      </div>
+      {footerColumns.map((group) => (
+        <FooterLinkGroup
+          key={group.heading}
+          heading={group.heading}
+          links={group.links}
+        />
       ))}
     </div>
   );
 }
-
 function PlusMinusIcon({ open }) {
   return (
     <span className="text-xl font-light leading-none text-white/70">

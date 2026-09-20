@@ -2,7 +2,7 @@
 
 ## Status
 
-Landing page complete (Hero → Footer).
+Landing page complete (Hero → Footer). Responsive mobile navbar added.
 
 ## Completed
 
@@ -21,10 +21,11 @@ Landing page complete (Hero → Footer).
 - Understand AI Astrology (UAA) section
 - FAQ section
 - Footer section
+- Responsive mobile/tablet navbar with slide-out drawer
 
 ## Current
 
-Footer completed. Full landing page order finished.
+Mobile navbar + drawer completed. Full landing page order finished, desktop nav unchanged.
 
 ## Next
 
@@ -90,3 +91,8 @@ None.
 - Footer accordion `+`/`−` uses plain text characters, not SVG (distinct from FAQ's div-based icon).
 - Footer link data (coreFeatures, freeCalculators, dailyConsult, astrologyBlog, insights, support) lives in-file; dummy hrefs (`#`) throughout.
 - Footer CTA email input has no submit handler yet — visual only, matching current milestone scope.
+- Navbar.jsx now contains both desktop nav (unchanged) and a separate mobile/tablet layout (logo + Chat pill + hamburger) gated with `hidden`/`lg:flex`/`lg:hidden`.
+- Mobile drawer (`MobileDrawer` inside Navbar.jsx) is a right-side slide-out panel, always mounted and toggled via translate-x transform for smooth open/close animation.
+- Drawer content: header (logo + close), Sign in/Sign up CTA, CONSULT group, FREE TOOLS group, EN button — grouped/icon data (`consultItems`, `toolItems`, `iconMap`) lives in-file.
+- No router in the project; all drawer nav links are plain `<a href="/">`, closing the drawer on click.
+- Drawer locks body scroll while open via a `useEffect` toggling `document.body.style.overflow`.
