@@ -1,28 +1,19 @@
 // src/components/Kundli.jsx
 import { useState, useRef, useEffect } from "react";
 
-function OrbitIcon() {
+// 👇 Replace the <svg> below with your own SVG
+function CustomIcon() {
   return (
-    <svg
-      width="80"
-      height="80"
-      viewBox="0 0 56 56"
-      fill="none"
-      stroke="currentColor"
-      className="text-pink-400/80"
-    >
-      <circle cx="28" cy="28" r="24" strokeWidth="1" opacity="0.5" />
-      <circle cx="28" cy="28" r="16" strokeWidth="1" opacity="0.7" />
-      <circle cx="28" cy="6" r="2" fill="currentColor" stroke="none" />
-      <circle cx="6" cy="28" r="1.5" fill="currentColor" stroke="none" />
-      <circle cx="50" cy="28" r="1.5" fill="currentColor" stroke="none" />
-      <circle cx="28" cy="28" r="7" strokeWidth="1.5" />
-      <path
-        d="M28 21v-3M28 41v-3M21 28h-3M41 28h-3M23 23l-2-2M35 35l-2-2M23 33l-2 2M35 21l-2 2"
-        strokeWidth="1.5"
-        strokeLinecap="round"
+    <div className="kundli-icon-anim">
+      <img
+        src="/kundli.svg"
+        alt="Kundli icon"
+        width={80}
+        height={80}
+        className="h-20 w-20"
+        draggable={false}
       />
-    </svg>
+    </div>
   );
 }
 
@@ -297,6 +288,23 @@ function Kundli() {
 
   return (
     <section className="relative z-10 px-4 sm:px-6 py-16 sm:py-20">
+      {/* Icon breathing animation */}
+      <style>{`
+        @keyframes kundliIconBreathe {
+          0%   { transform: scale(1); }
+          50%  { transform: scale(1.12); }
+          100% { transform: scale(1); }
+        }
+        .kundli-icon-anim {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          animation: kundliIconBreathe 4s ease-in-out infinite;
+          transform-origin: center;
+          will-change: transform;
+        }
+      `}</style>
+
       <div className="mx-auto max-w-5xl text-center">
         <h2 className="text-2xl sm:text-4xl font-bold text-white">
           Kundli Details: Uncover Your Astrological Insights
@@ -304,7 +312,7 @@ function Kundli() {
 
         <div className="mt-6 flex items-center justify-center gap-4">
           <span className="h-px w-24 flex-1 max-w-52 bg-linear-to-r from-transparent to-pink-500/40" />
-          <OrbitIcon />
+          <CustomIcon />
           <span className="h-px w-24 flex-1 max-w-52 bg-linear-to-l from-transparent to-pink-500/40" />
         </div>
       </div>

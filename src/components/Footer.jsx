@@ -135,7 +135,7 @@ function BrandBlock() {
   return (
     <div className="flex flex-col items-center gap-4 text-center lg:items-start lg:text-left">
       <a href="#" className="flex items-center">
-        <img src="/favicon.png" alt="Aura AI" className="h-12 w-18" />
+        <img src="/logo.svg" alt="Aura AI" className="h-16 w-16" />
         <span className="text-xl font-bold text-white">Aura AI</span>
       </a>
 
