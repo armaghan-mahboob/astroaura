@@ -2,7 +2,7 @@
 
 ## Status
 
-Landing page complete (Hero → Footer). Responsive mobile navbar added.
+Landing page complete (Hero → Footer). Responsive mobile navbar added. Hero background + Planets responsive behavior fixed.
 
 ## Completed
 
@@ -25,7 +25,7 @@ Landing page complete (Hero → Footer). Responsive mobile navbar added.
 
 ## Current
 
-Mobile navbar + drawer completed. Full landing page order finished, desktop nav unchanged.
+Hero background layers split per breakpoint, Planets gated to desktop only, tablet/mobile hero content centered and background stretched behind RightHero. Full landing page order finished, desktop nav unchanged.
 
 ## Next
 
@@ -51,7 +51,6 @@ None.
 - Hero uses flexbox instead of grid.
 - Cycling content uses useState + setInterval + opacity fade, no animation libraries.
 - Icons are inline SVG.
-- Background image: public/hero-bg.png.
 - Planets use pre-rotating .webp assets, not CSS spin animation.
 - Tarot.jsx contains tarot subcomponents in one file.
 - Tarot data lives in src/data/tarotCards.js.
@@ -96,3 +95,10 @@ None.
 - Drawer content: header (logo + close), Sign in/Sign up CTA, CONSULT group, FREE TOOLS group, EN button — grouped/icon data (`consultItems`, `toolItems`, `iconMap`) lives in-file.
 - No router in the project; all drawer nav links are plain `<a href="/">`, closing the drawer on click.
 - Drawer locks body scroll while open via a `useEffect` toggling `document.body.style.overflow`.
+- Hero background is split into two sibling layers instead of one media-queried element: a desktop layer (`hidden … lg:block`) and a tablet/mobile layer (`lg:hidden`), each with its own geometry and image so the two layouts never fight overrides.
+- Desktop hero background: `120vw × 119vh` (min-height 780px) ellipse, shifted up `top: -30vh` and centered with `-translate-x-1/2`, `rounded-[50%]`, overflow hidden. Image: `public/hero-bg.png` (1081×613), `bg-center`.
+- Tablet/mobile hero background: full-bleed `inset-0` panel with bottom curve `rounded-[0_0_50%_50%/0_0_90px_90px]`, `overflow-hidden`. Uses `inset-0` (not a fixed vh height) so the layer always stretches to the full section height and stays behind `RightHero` regardless of how tall the chat card gets.
+- Tablet/mobile hero image: `public/bg-cosmic.webp` (768×1376 portrait), anchored `bg-top` so the subject isn't cut off; `bg-cover`.
+- Both hero background layers carry `filter: brightness(.52) saturate(1.06) contrast(1.04)` and a `from-black/90 via-black/20 to-black/10` gradient overlay.
+- Hero content wrapper uses `items-center` on the flex column so `LeftHero` + `RightHero` are centered on tablet/mobile; `lg:items-start lg:justify-center` restores the original left-aligned desktop layout.
+- Planets is desktop-only: root uses `hidden … lg:block` (was `md:block`, which leaked it into the tablet breakpoint).

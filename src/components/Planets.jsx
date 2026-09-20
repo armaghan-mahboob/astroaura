@@ -75,13 +75,13 @@ const planets = [
 function Planets() {
   return (
     <div
-      className="relative z-20 hidden -mt-45 w-full pointer-events-none md:block"
+      className="relative z-20 hidden -mt-45 w-full pointer-events-none lg:block"
       style={{ aspectRatio: "1440 / 300" }}
     >
       {planets.map((planet) => (
         <div
           key={planet.name}
-          className="absolute -translate-x-1/2 flex flex-col items-center gap-1 transition-transform duration-300 ease-out hover:-translate-y-2 cursor-pointer pointer-events-auto"
+          className="absolute -translate-x-1/2 flex flex-col items-center gap-1 transition-transform duration-300 ease-out hover:-translate-y-2 pointer-events-auto"
           style={{ left: planet.left, top: planet.top }}
         >
           <div className="h-50.5 w-50.5 overflow-hidden leading-none shrink-0">

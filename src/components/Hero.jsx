@@ -4,38 +4,54 @@ import RightHero from "./RightHero";
 import Planets from "./Planets";
 
 function Hero() {
-  // Reduced height from 900 to 750 to compress the background height and reduce the gap
-  const maskSVG = `url("data:image/svg+xml,%3Csvg width='1440' height='750' viewBox='0 0 1440 750' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 L1440,0 L1440,520 C1080,750 360,750 0,520 Z' fill='black'/%3E%3C/svg%3E")`;
-
   return (
-    <section className="relative w-full pb-16 flex flex-col justify-between">
-      {/* Background Masked Container with reduced height */}
-      {/* Background Masked Container */}
+    <section className="relative flex w-full flex-col justify-between pb-16">
+      {/* ================= DESKTOP BACKGROUND  (>= 1024px) =================
+          120vw x 119vh ellipse, pushed up 30vh so only the bottom
+          curve of the ellipse is visible.                                  */}
       <div
-        className="absolute inset-x-0 top-0 h-[clamp(600px,52vw,750px)] pointer-events-none overflow-hidden"
-        style={{
-          maskImage: maskSVG,
-          maskSize: "100% 100%",
-          maskPosition: "center",
-          maskRepeat: "no-repeat",
-          WebkitMaskImage: maskSVG,
-          WebkitMaskSize: "100% 100%",
-          WebkitMaskPosition: "center",
-          WebkitMaskRepeat: "no-repeat",
-        }}
+        className="
+          pointer-events-none absolute left-1/2 top-[-30vh] hidden
+          h-[119vh] min-h-195 w-[120vw] -translate-x-1/2
+          overflow-hidden rounded-[50%]
+          lg:block
+        "
+        style={{ filter: "brightness(.52) saturate(1.06) contrast(1.04)" }}
       >
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/hero-bg.png')" }}
         />
-
         <div className="absolute inset-0 bg-linear-to-b from-black/90 via-black/20 to-black/10" />
       </div>
 
+      {/* ============ TABLET + MOBILE BACKGROUND  (< 1024px) ==============
+          Full-bleed panel with a bottom curve, min 72vh tall,
+          portrait image anchored to the top.                              */}
+      {/* ============ TABLET + MOBILE BACKGROUND  (< 1024px) ============== */}
+      <div
+        className="
+    pointer-events-none absolute inset-0
+    overflow-hidden
+    rounded-[0_0_50%_50%/0_0_90px_90px]
+    lg:hidden
+  "
+        style={{ filter: "brightness(.52) saturate(1.06) contrast(1.04)" }}
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-top bg-no-repeat"
+          style={{ backgroundImage: "url('/bg-cosmic.webp')" }}
+        />
+        <div className="absolute inset-0 bg-linear-to-b from-black/90 via-black/20 to-black/10" />
+      </div>
+
+      {/* ============================ CONTENT ============================ */}
       <Navbar />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-34 pb-8 sm:px-6 lg:px-10 pointer-events-none w-full">
-        <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-start lg:justify-center lg:gap-10 pointer-events-auto">
+      <div className="pointer-events-none relative z-10 mx-auto w-full max-w-7xl px-4 pt-34 pb-8 sm:px-6 lg:px-10">
+        {/* items-center  ->  centers LeftHero + RightHero on tablet/mobile
+            lg:items-start -> left-aligns them on desktop as before       */}
+        <div className="pointer-events-auto flex flex-col items-center gap-10 lg:flex-row lg:items-start lg:justify-center lg:gap-10">
           <LeftHero />
           <RightHero />
         </div>
