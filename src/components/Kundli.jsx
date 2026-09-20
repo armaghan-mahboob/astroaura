@@ -266,9 +266,13 @@ function NewKundliForm() {
         <button
           type="button"
           disabled
-          className="w-full rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-6 py-4 text-base font-semibold text-white opacity-90 shadow-[0_0_20px_rgba(255,60,120,0.35)] transition-transform enabled:hover:scale-105 disabled:cursor-not-allowed"
+          className="relative w-full overflow-hidden rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-6 py-4 text-base font-semibold text-white opacity-90 shadow-[0_0_20px_rgba(255,60,120,0.35)] transition-transform enabled:hover:scale-105 disabled:cursor-not-allowed"
         >
-          Select birth city to continue
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 -left-3/4 w-1/2 -skew-x-12 bg-linear-to-r from-transparent via-white/55 to-transparent animate-[cta-shine_2.8s_ease-in-out_infinite]"
+          />
+          <span className="relative">Select birth city to continue</span>
         </button>
       </div>
     </div>
@@ -318,13 +322,32 @@ function Kundli() {
       </div>
 
       <div
-        className="mx-auto mt-10 max-w-6xl overflow-hidden rounded-3xl border border-white/10"
+        className="mx-auto mt-10 max-w-6xl relative w-full"
         style={{
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          background:
+            "linear-gradient(180deg,#ffffff1a,hsla(0,0%,100%,.035)) padding-box, linear-gradient(135deg,#ed06878c,#fe6c0f73 55%,#ffffff1f) border-box",
+          border: "1px solid transparent",
+          borderRadius: "28px",
           boxShadow:
             "inset 0 1px 0 #ffffff29, 0 30px 80px -30px #000000a6, 0 0 70px -22px #ed068766",
+          paddingBottom: "8px",
         }}
       >
-        <div className="flex bg-white/5 p-2 sm:p-3.5">
+        <div
+          className="flex items-center justify-between gap-2 overflow-hidden w-full"
+          style={{
+            background: "#0000002e",
+            borderBottom: "1px solid #ffffff14",
+            borderTopLeftRadius: "28px",
+            borderTopRightRadius: "28px",
+            boxShadow: "inset 0 2px 6px #00000047",
+            height: "74px",
+            padding: "8px",
+          }}
+        >
+          {" "}
           <button
             type="button"
             onClick={() => setActiveTab("new")}

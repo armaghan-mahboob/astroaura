@@ -43,6 +43,18 @@ body {
   }
 }
 
+@keyframes cta-shine {
+  0% {
+    left: -75%;
+  }
+  60% {
+    left: 125%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
 .animate-marquee {
   animation: marquee 40s linear infinite;
 }
