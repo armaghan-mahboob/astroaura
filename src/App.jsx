@@ -14,44 +14,82 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    /* Changed overflow-hidden to overflow-x-hidden to restore full page scrolling */
-    <div className="relative min-h-screen w-full bg-[#1c0423] text-white overflow-x-hidden">
-      {/* 1. Base Radial Backdrop - Changed absolute to fixed so it stays behind all content */}
+    <div className="relative min-h-screen w-full overflow-x-hidden text-white">
+      {/* ============ 1. BASE COSMIC GRADIENT ============
+          Vertical magenta wash: #4c065f (top) -> #700547 (bottom).
+          Fixed to viewport so the page scrolls over a static cosmos. */}
       <div
-        className="fixed inset-0 pointer-events-none"
+        className="pointer-events-none fixed inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 30%, #3d0c4e 0%, #23052b 50%, #130218 100%)",
+            "linear-gradient(180deg, #4c065f 0%, #5a1259 35%, #6a1a55 70%, #700547 100%)",
         }}
       />
-
-      {/* 2. Soft Purple Glow - Fixed to viewport */}
-      <div className="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-125 w-150 rounded-full bg-purple-600/20 blur-[120px] pointer-events-none" />
-
-      {/* 3. Soft Pink Glow - Fixed to viewport */}
-      <div className="fixed top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-100 w-125 rounded-full bg-pink-600/15 blur-[140px] pointer-events-none" />
-
-      {/* 4. Starfield Tile Pattern - Fixed to viewport */}
+      {/* ============ 2. SOFT PURPLE GLOW (top) ============ */}
+      <div className="pointer-events-none fixed left-1/2 top-1/4 z-0 h-125 w-150 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/25 blur-[120px]" />
+      {/* ============ 3. SOFT PINK GLOW (bottom) ============ */}
+      <div className="pointer-events-none fixed left-1/2 top-3/4 z-0 h-100 w-125 -translate-x-1/2 -translate-y-1/2 rounded-full bg-pink-500/20 blur-[140px]" />
+      {/* ============ 4. STARFIELD TILE ============ */}
+      {/* ============ 4. STARFIELD TILE ============ */}
+      {/* ============ 4. STARFIELD TILE (soft / blurred) ============ */}
+      {/* ============ 4. STARFIELD TILE (soft / blurred) ============ */}
       <div
-        className="fixed inset-0 pointer-events-none opacity-60"
+        className="pointer-events-none fixed inset-0 z-0 opacity-70"
         style={{
           backgroundImage: `
-            radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-            radial-gradient(1.5px 1.5px at 150px 80px, #ffb3d9, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 280px 120px, #ffffff, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 400px 200px, #ffe6f2, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 520px 310px, #ffffff, rgba(0,0,0,0)),
-            radial-gradient(1.5px 1.5px at 680px 180px, #ffd1ec, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 800px 240px, #ffffff, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 950px 60px, #ffffff, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 1100px 290px, #ffccd5, rgba(0,0,0,0)),
-            radial-gradient(1.5px 1.5px at 1250px 140px, #ffffff, rgba(0,0,0,0))
-          `,
+      radial-gradient(3px 3px at 20px 30px,   rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.30) 25%, transparent 55%),
+      radial-gradient(3px 3px at 60px 180px,  rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.25) 25%, transparent 55%),
+      radial-gradient(4px 4px at 110px 60px,  rgba(255,179,217,0.90) 0%, rgba(255,179,217,0.30) 25%, transparent 55%),
+      radial-gradient(3px 3px at 150px 80px,  rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.30) 25%, transparent 55%),
+      radial-gradient(3.5px 3.5px at 190px 260px, rgba(255,209,236,0.85) 0%, rgba(255,209,236,0.25) 25%, transparent 55%),
+      radial-gradient(4px 4px at 230px 40px,  rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.35) 25%, transparent 55%),
+      radial-gradient(3px 3px at 260px 200px, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.25) 25%, transparent 55%),
+      radial-gradient(3.5px 3.5px at 300px 130px, rgba(255,204,213,0.90) 0%, rgba(255,204,213,0.30) 25%, transparent 55%),
+      radial-gradient(3px 3px at 340px 300px, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.25) 25%, transparent 55%),
+      radial-gradient(3px 3px at 380px 90px,  rgba(255,230,242,0.90) 0%, rgba(255,230,242,0.30) 25%, transparent 55%),
+      radial-gradient(4px 4px at 420px 220px, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.35) 25%, transparent 55%),
+      radial-gradient(3px 3px at 460px 40px,  rgba(255,179,217,0.85) 0%, rgba(255,179,217,0.25) 25%, transparent 55%),
+      radial-gradient(3px 3px at 500px 170px, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.30) 25%, transparent 55%),
+      radial-gradient(3.5px 3.5px at 540px 280px, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.25) 25%, transparent 55%),
+      radial-gradient(3px 3px at 580px 90px,  rgba(255,209,236,0.90) 0%, rgba(255,209,236,0.30) 25%, transparent 55%),
+      radial-gradient(3px 3px at 30px 320px,  rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.25) 25%, transparent 55%),
+      radial-gradient(3.5px 3.5px at 90px 250px, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.30) 25%, transparent 55%),
+      radial-gradient(3px 3px at 170px 340px, rgba(255,204,213,0.85) 0%, rgba(255,204,213,0.25) 25%, transparent 55%),
+      radial-gradient(3px 3px at 250px 30px,  rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.30) 25%, transparent 55%),
+      radial-gradient(4px 4px at 330px 60px,  rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.35) 25%, transparent 55%),
+      radial-gradient(3px 3px at 410px 150px, rgba(255,230,242,0.85) 0%, rgba(255,230,242,0.25) 25%, transparent 55%),
+      radial-gradient(3px 3px at 490px 240px, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.30) 25%, transparent 55%),
+      radial-gradient(3.5px 3.5px at 550px 200px, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.25) 25%, transparent 55%),
+
+      radial-gradient(2.5px 2.5px at 40px 100px,  rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.25) 25%, transparent 55%),
+      radial-gradient(3px 3px at 80px 20px,     rgba(255,209,236,0.90) 0%, rgba(255,209,236,0.28) 25%, transparent 55%),
+      radial-gradient(2.5px 2.5px at 130px 200px, rgba(255,255,255,0.80) 0%, rgba(255,255,255,0.22) 25%, transparent 55%),
+      radial-gradient(3px 3px at 170px 140px,   rgba(255,179,217,0.85) 0%, rgba(255,179,217,0.26) 25%, transparent 55%),
+      radial-gradient(3.5px 3.5px at 210px 320px, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.30) 25%, transparent 55%),
+      radial-gradient(2.5px 2.5px at 240px 100px, rgba(255,230,242,0.85) 0%, rgba(255,230,242,0.25) 25%, transparent 55%),
+      radial-gradient(3px 3px at 280px 260px,   rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.25) 25%, transparent 55%),
+      radial-gradient(2.5px 2.5px at 320px 40px,  rgba(255,204,213,0.85) 0%, rgba(255,204,213,0.25) 25%, transparent 55%),
+      radial-gradient(3px 3px at 360px 180px,   rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.28) 25%, transparent 55%),
+      radial-gradient(2.5px 2.5px at 400px 60px,  rgba(255,255,255,0.80) 0%, rgba(255,255,255,0.22) 25%, transparent 55%),
+      radial-gradient(3px 3px at 440px 300px,   rgba(255,209,236,0.85) 0%, rgba(255,209,236,0.25) 25%, transparent 55%),
+      radial-gradient(3.5px 3.5px at 480px 130px, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.30) 25%, transparent 55%),
+      radial-gradient(2.5px 2.5px at 520px 60px,  rgba(255,179,217,0.85) 0%, rgba(255,179,217,0.25) 25%, transparent 55%),
+      radial-gradient(3px 3px at 560px 320px,   rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.25) 25%, transparent 55%),
+      radial-gradient(2.5px 2.5px at 10px 220px,  rgba(255,230,242,0.80) 0%, rgba(255,230,242,0.22) 25%, transparent 55%),
+      radial-gradient(3px 3px at 50px 40px,     rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.28) 25%, transparent 55%),
+      radial-gradient(2.5px 2.5px at 100px 300px, rgba(255,204,213,0.85) 0%, rgba(255,204,213,0.25) 25%, transparent 55%),
+      radial-gradient(3px 3px at 140px 20px,    rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.25) 25%, transparent 55%),
+      radial-gradient(2.5px 2.5px at 200px 180px, rgba(255,255,255,0.80) 0%, rgba(255,255,255,0.22) 25%, transparent 55%),
+      radial-gradient(3.5px 3.5px at 300px 340px, rgba(255,209,236,0.90) 0%, rgba(255,209,236,0.30) 25%, transparent 55%),
+      radial-gradient(2.5px 2.5px at 430px 100px, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.25) 25%, transparent 55%),
+      radial-gradient(3px 3px at 510px 260px,   rgba(255,179,217,0.85) 0%, rgba(255,179,217,0.26) 25%, transparent 55%),
+      radial-gradient(2.5px 2.5px at 580px 240px, rgba(255,255,255,0.80) 0%, rgba(255,255,255,0.22) 25%, transparent 55%)
+    `,
           backgroundSize: "600px 350px",
+          filter: "blur(1px)",
         }}
       />
-
-      {/* Page Content wrapped natively without breaking scroll */}
+      {/* ============ 5. CONTENT ============ */}
       <div className="relative z-10 flex flex-col">
         <Hero />
         <Features />

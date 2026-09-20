@@ -1,11 +1,39 @@
 @import "tailwindcss";
 
+/* ============================================================
+   BASE / BODY
+   ============================================================ */
+html,
 body {
-  background: linear-gradient(180deg, #4c065f 0%, #700547 100%);
-  background-attachment: fixed;
-  color: #ffffff;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #1a0a1f;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
 }
 
+body {
+  /* Vertical magenta cosmic gradient — matches App.jsx fixed layer */
+  background: linear-gradient(
+    180deg,
+    #4c065f 0%,
+    #5a1259 35%,
+    #6a1a55 70%,
+    #700547 100%
+  );
+  background-attachment: fixed;
+}
+
+#root {
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
 @keyframes marquee {
   from {
     transform: translateX(-20%);
@@ -19,6 +47,9 @@ body {
   animation: marquee 40s linear infinite;
 }
 
+/* ============================================================
+   HIDE SCROLLBAR
+   ============================================================ */
 .no-scrollbar {
   scrollbar-width: none;
 }
