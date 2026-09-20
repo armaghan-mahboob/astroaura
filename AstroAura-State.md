@@ -19,14 +19,15 @@ Landing page in progress.
 - Blog Strip section
 - Mobile App section
 - Understand AI Astrology (UAA) section
+- FAQ section (Milestone 1: layout, accordion behavior, icons)
 
 ## Current
 
-UAA section completed.
+FAQ Milestone 1 completed.
 
 ## Next
 
-FAQ.
+FAQ Milestone 2 (if any refinements) or Footer.
 
 ## Planned Order
 
@@ -76,3 +77,9 @@ None.
 - UAA.jsx contains all its subcomponents (badges, steps, topic cards, checklist) in one file, built across 3 reference images in stacked card sections.
 - UAA topic grid ("What Can You Ask") is 1/2/3 columns at mobile/tablet/desktop.
 - UAA "Why Choose Aura AI" checklist is a flat 2-column grid (left items then right items), 1 column on mobile.
+- FAQ.jsx contains all its subcomponents (icons, PlusMinusIcon, FAQItem) in one file, following the UAA/Tarot single-file pattern.
+- FAQ is single-open accordion (opening one closes any other open item); first item open by default.
+- FAQ height animation uses CSS grid-rows (`[0fr]`/`[1fr]`) trick, no animation library.
+- FAQ `+`/`−` toggle built from two plain divs (horizontal + vertical bar), not SVG.
+- FAQ card background uses solid translucent magenta (`bg-[#5c1a48]/70`), distinct from other sections' `bg-white/5` cards, to match reference.
+- FAQ icons are inline SVG matching the outline style of other icon components; dummy Q&A data lives in-file.
