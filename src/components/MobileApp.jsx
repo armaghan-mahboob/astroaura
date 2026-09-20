@@ -43,21 +43,21 @@ function StoreButton({ Icon, caption, store }) {
 const devices = [
   {
     id: "left",
-    img: "/public/mobileapps/leftMobile.webp",
+    img: "/mobileapps/leftMobile.webp",
     rotate: -12,
     z: 10,
     left: "6%",
   },
   {
     id: "center",
-    img: "/public/mobileapps/middleMobile.webp",
+    img: "/mobileapps/middleMobile.webp",
     rotate: 0,
     z: 20,
     left: "50%",
   },
   {
     id: "right",
-    img: "/public/mobileapps/rightMobile.webp",
+    img: "/mobileapps/rightMobile.webp",
     rotate: 12,
     z: 10,
     right: "6%",

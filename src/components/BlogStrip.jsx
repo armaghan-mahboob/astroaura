@@ -2,28 +2,28 @@ const posts = [
   {
     category: "Kundli Matching",
     title: "Kundli Matching: How Gun Milan Actually Works",
-    image: "/public/blogstrips/kundli.webp",
+    image: "/blogstrips/kundli.webp",
   },
   {
     category: "Compatibility",
     title: "Love Calculator: What the Score Actually Means",
-    image: "/public/blogstrips/love.webp",
+    image: "/blogstrips/love.webp",
   },
   {
     category: "AI Astrology",
     title:
       "Is AI Capable of Predicting Your Future? AI Astrology vs Human Astrology",
-    image: "/public/blogstrips/future.webp",
+    image: "/blogstrips/future.webp",
   },
   {
     category: "Zodiac Signs",
     title: "The Fire Signs: Aries, Leo, and Sagittarius Personality Traits",
-    image: "/public/blogstrips/zodiac.webp",
+    image: "/blogstrips/zodiac.webp",
   },
   {
     category: "Moon Phases",
     title: "Harnessing Full Moon Energy for Manifestation and Release",
-    image: "/public/blogstrips/moon.webp",
+    image: "/blogstrips/moon.webp",
   },
 ];
 

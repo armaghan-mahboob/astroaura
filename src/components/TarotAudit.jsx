@@ -8,7 +8,7 @@ function AuditRow({ card }) {
     <div className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 p-2">
       <div className="h-20 w-14 shrink-0 overflow-hidden rounded border border-white/15 bg-black/30">
         <img
-          src={`/public/tarots/${card.slug}.jpg`}
+          src={`/tarots/${card.slug}.jpg`}
           alt={card.name}
           className="h-full w-full object-cover"
           onLoad={() => setStatus("ok")}

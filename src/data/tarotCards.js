@@ -1,5 +1,5 @@
 // Full 78-card Rider-Waite-Smith deck. `image` expects a matching file at
-// /public/tarot/<slug>.jpg — see audit page to confirm all 78 are present.
+// /tarot/<slug>.jpg — see audit page to confirm all 78 are present.
 const tarotCards = [
   // Major Arcana
   {
@@ -396,7 +396,7 @@ const tarotCards = [
 
 export function getCardById(id) {
   const card = tarotCards[id];
-  return { ...card, image: `/public/tarots/${card.slug}.jpg` };
+  return { ...card, image: `/tarots/${card.slug}.jpg` };
 }
 
 export default tarotCards;

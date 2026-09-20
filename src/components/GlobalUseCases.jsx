@@ -95,42 +95,42 @@ const useCases = [
     title: "Love & Relationship",
     description:
       "Understand relationship patterns, compatibility, emotional confusion, and future direction.",
-    image: "/public/usecases/love.webp",
+    image: "/usecases/love.webp",
   },
   {
     icon: FamilyIcon,
     title: "Marriage & Family",
     description:
       "Guidance on marriage timing, family pressure, partner concerns, and compatibility.",
-    image: "/public/usecases/marriage.webp",
+    image: "/usecases/marriage.webp",
   },
   {
     icon: BriefcaseIcon,
     title: "Career & Job",
     description:
       "Ask about career growth, job change, business decisions, and professional challenges.",
-    image: "/public/usecases/career.webp",
+    image: "/usecases/career.webp",
   },
   {
     icon: CoinsIcon,
     title: "Money & Finance",
     description:
       "Understand financial phases, opportunities, delays, and better timing for decisions.",
-    image: "/public/usecases/money.webp",
+    image: "/usecases/money.webp",
   },
   {
     icon: CompassIcon,
     title: "Life Direction",
     description:
       "Get clarity when you feel stuck, confused, or unsure about your next step.",
-    image: "/public/usecases/life.webp",
+    image: "/usecases/life.webp",
   },
   {
     icon: MoonIcon,
     title: "Your Birth Chart",
     description:
       "Your exact natal chart read and explained, planets, houses, dashas, and what they mean for you.",
-    image: "/public/usecases/birth.webp",
+    image: "/usecases/birth.webp",
   },
 ];
 
