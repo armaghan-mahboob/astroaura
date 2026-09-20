@@ -2,7 +2,7 @@
 
 ## Status
 
-Landing page in progress.
+Landing page complete (Hero → Footer).
 
 ## Completed
 
@@ -19,15 +19,16 @@ Landing page in progress.
 - Blog Strip section
 - Mobile App section
 - Understand AI Astrology (UAA) section
-- FAQ section (Milestone 1: layout, accordion behavior, icons)
+- FAQ section
+- Footer section
 
 ## Current
 
-FAQ Milestone 1 completed.
+Footer completed. Full landing page order finished.
 
 ## Next
 
-FAQ Milestone 2 (if any refinements) or Footer.
+Open — no confirmed next milestone yet (e.g. polish pass, new page, backend integration).
 
 ## Planned Order
 
@@ -83,3 +84,9 @@ None.
 - FAQ `+`/`−` toggle built from two plain divs (horizontal + vertical bar), not SVG.
 - FAQ card background uses solid translucent magenta (`bg-[#5c1a48]/70`), distinct from other sections' `bg-white/5` cards, to match reference.
 - FAQ icons are inline SVG matching the outline style of other icon components; dummy Q&A data lives in-file.
+- Footer.jsx contains all its subcomponents (icons, FooterCTA, BrandBlock, FooterLinkGroup, DesktopLinks, MobileAccordionItem, MobileLinks, FooterBottom) in one file.
+- Footer desktop layout is 4 columns: BrandBlock + 3 columns, each column stacking 2 link groups vertically (Core Features/Astrology Blog, Free Calculators/Insights, Daily & Consult/Support).
+- Footer mobile layout flattens all 6 link groups into a single-open accordion (same grid-rows pattern as FAQ), with brand block above it.
+- Footer accordion `+`/`−` uses plain text characters, not SVG (distinct from FAQ's div-based icon).
+- Footer link data (coreFeatures, freeCalculators, dailyConsult, astrologyBlog, insights, support) lives in-file; dummy hrefs (`#`) throughout.
+- Footer CTA email input has no submit handler yet — visual only, matching current milestone scope.

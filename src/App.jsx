@@ -9,6 +9,7 @@ import BlogStrip from "./components/BlogStrip";
 import MobileApp from "./components/MobileApp";
 import UAA from "./components/UAA";
 import FAQ from "./components/FAQ";
+import Footer from "./components/Footer";
 // import TarotAudit from "./components/TarotAudit";
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
         <MobileApp />
         <UAA />
         <FAQ />
+        <Footer />
       </div>
     </div>
   );
