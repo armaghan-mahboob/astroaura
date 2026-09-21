@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const cyclingWords = [
   "deepest questions",
@@ -89,19 +90,17 @@ function LeftHero() {
         ))}
       </ul>
 
-      {/* CTA Button: Restored button padding & text size */}
       {/* CTA Button */}
-      <a
-        href="#"
+      <Link
+        to="/chat"
         className="group relative w-fit overflow-hidden rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-7 py-3 text-base font-semibold text-white shadow-[0_8px_30px_#ed0687b3,0_0_30px_2px_#fe6c0f8c] transition-all duration-200 hover:-translate-y-1"
       >
-        {/* shine */}
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-y-0 -left-3/4 w-1/2 -skew-x-12 bg-linear-to-r from-transparent via-white/55 to-transparent animate-[cta-shine_2.8s_ease-in-out_infinite]"
         />
         <span className="relative">Ask Your First Question FREE</span>
-      </a>
+      </Link>
     </div>
   );
 }

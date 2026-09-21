@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function HeartIcon() {
   return (
@@ -108,6 +109,7 @@ const cards = [
 
 function FeatureCarousel() {
   const scrollRef = useRef(null);
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const scrollToIndex = (index) => {
@@ -202,6 +204,7 @@ function FeatureCarousel() {
 
                 <button
                   type="button"
+                  onClick={() => navigate("/chat")}
                   className="flex w-fit items-center gap-1.5 rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-5 py-2.5 text-[10px] font-semibold text-white shadow-[0_0_12px_rgba(255,60,120,0.35)] transition-transform hover:scale-105 sm:px-7 sm:py-3 sm:text-[11px]"
                 >
                   <card.icon className="h-3 w-3" />

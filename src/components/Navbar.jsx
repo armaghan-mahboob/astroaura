@@ -466,10 +466,10 @@ function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-0 sm:px-6 lg:px-0">
       <nav className="flex w-full items-center justify-between rounded-2xl sm:rounded-full border border-[#837373] bg-[linear-gradient(25deg,rgba(255,255,255,0.2),rgba(255,255,255,0.039))] px-4 py-2.5 shadow-[0_1.2px_30px_rgba(69,42,124,0.102)] backdrop-blur-[85px] sm:px-6">
-        <a href="#" className="flex shrink-0 justify-center items-center">
+        <Link to="/" className="flex shrink-0 justify-center items-center">
           <img src="/logo.svg" alt="Aura AI" className="h-14 w-14" />
           <span className="text-lg font-bold text-white">Aura AI</span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-7 lg:flex lg:gap-10">
           {navLinks.map((link) =>
@@ -510,12 +510,12 @@ function Navbar() {
             EN
           </button>
           <span className="h-6 w-px bg-white/15" />
-          <a
-            href="#"
+          <Link
+            to="/chat"
             className="rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_20px_rgba(255,60,120,0.4)] transition-transform hover:scale-105"
           >
             Ask Aura AI
-          </a>
+          </Link>
         </div>
 
         {/* Mobile/tablet right side */}
