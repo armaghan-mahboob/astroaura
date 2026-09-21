@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
   { label: "Reports", href: "#" },
   { label: "Birth Chart", href: "#" },
-  { label: "Chat", href: "#" },
+  { label: "Chat", href: "#", to: "/chat" },
   { label: "Call", href: "#" },
   { label: "Shop", href: "#" },
   { label: "Blog", href: "#" },
@@ -18,7 +19,7 @@ const dropdownLinks = [
 ];
 
 const consultItems = [
-  { label: "Chat", icon: "chat" },
+  { label: "Chat", icon: "chat", to: "/chat" },
   { label: "Reports", icon: "document" },
   { label: "Birth Chart", icon: "chart" },
   { label: "Talk to an Astrologer", icon: "phone" },
@@ -341,11 +342,11 @@ function NavDropdown({ label, items }) {
   );
 }
 
-function DrawerRow({ icon, label, badge, expandable }) {
+function DrawerRow({ icon, label, badge, expandable, to = "/" }) {
   const Icon = iconMap[icon];
   return (
-    <a
-      href="/"
+    <Link
+      to={to}
       className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3.5 text-white transition-colors hover:bg-white/15"
     >
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/10">
@@ -362,7 +363,7 @@ function DrawerRow({ icon, label, badge, expandable }) {
       ) : (
         <ChevronRightIcon className="text-white/60" />
       )}
-    </a>
+    </Link>
   );
 }
 
@@ -422,7 +423,12 @@ function MobileDrawer({ open, onClose }) {
         </p>
         <div className="flex flex-col gap-2" onClick={onClose}>
           {consultItems.map((item) => (
-            <DrawerRow key={item.label} icon={item.icon} label={item.label} />
+            <DrawerRow
+              key={item.label}
+              icon={item.icon}
+              label={item.label}
+              to={item.to}
+            />
           ))}
         </div>
 
@@ -466,15 +472,25 @@ function Navbar() {
         </a>
 
         <div className="hidden items-center gap-7 lg:flex lg:gap-10">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-lg font-medium text-white/90 transition-colors hover:text-white"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.to ? (
+              <Link
+                key={link.label}
+                to={link.to}
+                className="text-lg font-medium text-white/90 transition-colors hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-lg font-medium text-white/90 transition-colors hover:text-white"
+              >
+                {link.label}
+              </a>
+            ),
+          )}
           {dropdownLinks.map((dropdown) => (
             <NavDropdown
               key={dropdown.label}
@@ -504,13 +520,13 @@ function Navbar() {
 
         {/* Mobile/tablet right side */}
         <div className="flex items-center gap-1 lg:hidden">
-          <button
-            type="button"
+          <Link
+            to="/chat"
             className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-sm font-medium text-white/90"
           >
             <ChatIcon className="h-4 w-4" />
             Chat
-          </button>
+          </Link>
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
