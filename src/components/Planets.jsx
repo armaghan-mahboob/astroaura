@@ -81,7 +81,7 @@ function Planets() {
       {planets.map((planet) => (
         <div
           key={planet.name}
-          className="absolute -translate-x-1/2 flex flex-col items-center gap-1 transition-transform duration-300 ease-out hover:-translate-y-2 pointer-events-auto"
+          className="absolute -translate-x-1/2 flex flex-col items-center gap-1 transition-transform duration-300 ease-out hover:-translate-y-2 pointer-events-auto select-none"
           style={{ left: planet.left, top: planet.top }}
         >
           <div className="h-50.5 w-50.5 overflow-hidden leading-none shrink-0">

@@ -512,7 +512,7 @@ function Navbar() {
           <span className="h-6 w-px bg-white/15" />
           <Link
             to="/chat"
-            className="rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_20px_rgba(255,60,120,0.4)] transition-transform hover:scale-105"
+            className="rounded-full select-none bg-linear-to-r from-pink-600 to-orange-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_20px_rgba(255,60,120,0.4)] transition-transform hover:scale-105"
           >
             Ask Aura AI
           </Link>

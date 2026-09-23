@@ -120,7 +120,7 @@ function FooterCTA() {
         />
         <button
           type="button"
-          className="w-full shrink-0 rounded-xl bg-linear-to-r from-pink-600 to-orange-500 px-7 py-3 text-sm font-semibold text-white shadow-[0_0_20px_rgba(255,60,120,0.4)] transition-transform hover:scale-105 sm:w-auto"
+          className="w-full select-none shrink-0 rounded-xl bg-linear-to-r from-pink-600 to-orange-500 px-7 py-3 text-sm font-semibold text-white shadow-[0_0_20px_rgba(255,60,120,0.4)] transition-transform hover:scale-105 sm:w-auto"
         >
           Get Started
         </button>

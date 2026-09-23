@@ -205,7 +205,7 @@ function FeatureCarousel() {
                 <button
                   type="button"
                   onClick={() => navigate("/chat")}
-                  className="flex w-fit items-center gap-1.5 rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-5 py-2.5 text-[10px] font-semibold text-white shadow-[0_0_12px_rgba(255,60,120,0.35)] transition-transform hover:scale-105 sm:px-7 sm:py-3 sm:text-[11px]"
+                  className="flex select-none w-fit items-center gap-1.5 rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-5 py-2.5 text-[10px] font-semibold text-white shadow-[0_0_12px_rgba(255,60,120,0.35)] transition-transform hover:scale-105 sm:px-7 sm:py-3 sm:text-[11px]"
                 >
                   <card.icon className="h-3 w-3" />
                   Ask Aura AI

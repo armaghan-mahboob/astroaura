@@ -93,7 +93,7 @@ function LeftHero() {
       {/* CTA Button */}
       <Link
         to="/chat"
-        className="group relative w-fit overflow-hidden rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-7 py-3 text-base font-semibold text-white shadow-[0_8px_30px_#ed0687b3,0_0_30px_2px_#fe6c0f8c] transition-all duration-200 hover:-translate-y-1"
+        className="group select-none relative w-fit overflow-hidden rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-7 py-3 text-base font-semibold text-white shadow-[0_8px_30px_#ed0687b3,0_0_30px_2px_#fe6c0f8c] transition-all duration-200 hover:-translate-y-1"
       >
         <span
           aria-hidden="true"

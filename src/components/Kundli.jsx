@@ -35,7 +35,6 @@ function ChevronDownIcon({ isOpen }) {
   );
 }
 
-// Custom Styled Select Component with disabled support
 function CustomSelect({ placeholder, options, value, onChange, disabled }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -145,6 +144,109 @@ const minutes = Array.from({ length: 60 }, (_, i) =>
   String(i).padStart(2, "0"),
 );
 
+function CityAutocomplete({ value, onSelect }) {
+  const [query, setQuery] = useState(value || "");
+  const [suggestions, setSuggestions] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const wrapperRef = useRef(null);
+  const debounceRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleChange = (e) => {
+    const val = e.target.value;
+    setQuery(val);
+    onSelect(null); // clear selection while user edits text
+    setIsOpen(true);
+
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+
+    if (val.trim().length < 2) {
+      setSuggestions([]);
+      return;
+    }
+
+    debounceRef.current = setTimeout(async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(
+          `https://photon.komoot.io/api/?q=${encodeURIComponent(val)}&limit=8`,
+        );
+        const data = await res.json();
+        setSuggestions(data.features || []);
+      } catch {
+        setSuggestions([]);
+      } finally {
+        setLoading(false);
+      }
+    }, 400);
+  };
+
+  const labelFor = (feature) => {
+    const { name, state, country } = feature.properties;
+    return [name, state, country].filter(Boolean).join(", ");
+  };
+
+  const handleSelect = (feature) => {
+    const label = labelFor(feature);
+    setQuery(label);
+    setSuggestions([]);
+    setIsOpen(false);
+    onSelect(label);
+  };
+
+  return (
+    <div className="relative" ref={wrapperRef}>
+      <input
+        type="text"
+        value={query}
+        onChange={handleChange}
+        onFocus={() => query.trim().length >= 2 && setIsOpen(true)}
+        placeholder="Start typing, then tap your city"
+        className="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3.5 text-base font-semibold text-white placeholder-white/40 outline-none transition-colors focus:border-pink-500/50"
+      />
+
+      {isOpen && query.trim().length >= 2 && (
+        <div className="absolute left-0 top-full z-50 mt-1.5 max-h-64 w-full overflow-y-auto rounded-2xl border border-white/20 bg-linear-to-b from-[#8a224f] via-[#b82662] to-[#3b0b24] p-2 shadow-2xl backdrop-blur-md [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-zinc-700 [&::-webkit-scrollbar-track]:rounded-r-2xl [&::-webkit-scrollbar-track]:bg-zinc-300 [&::-webkit-scrollbar]:w-3">
+          <div className="px-3 py-2 text-sm font-medium text-orange-300">
+            Tap your city in the list — we need it to cast the kundli.
+          </div>
+
+          {loading && (
+            <div className="px-3 py-2.5 text-sm text-white/60">Searching…</div>
+          )}
+
+          {!loading && suggestions.length === 0 && (
+            <div className="px-3 py-2.5 text-sm text-white/50">
+              No matches found
+            </div>
+          )}
+
+          {suggestions.map((feature, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => handleSelect(feature)}
+              className="w-full select-none rounded-xl px-3 py-2.5 text-left text-base font-normal text-white/90 transition-colors hover:bg-white/20"
+            >
+              {labelFor(feature)}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function NewKundliForm() {
   const [formData, setFormData] = useState({
     gender: "",
@@ -155,6 +257,7 @@ function NewKundliForm() {
     minute: "",
     ampm: "",
     unknownTime: false,
+    birthPlace: null,
   });
 
   const updateForm = (field, val) => {
@@ -255,9 +358,13 @@ function NewKundliForm() {
       </div>
 
       {/* Birth Place */}
+      {/* Birth Place */}
       <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
         <Field label="Birth Place">
-          <TextInput placeholder="Start typing, then tap your city" />
+          <CityAutocomplete
+            value={formData.birthPlace}
+            onSelect={(city) => updateForm("birthPlace", city)}
+          />
         </Field>
       </div>
 
@@ -265,14 +372,22 @@ function NewKundliForm() {
       <div className="flex w-full items-end sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
         <button
           type="button"
-          disabled
-          className="relative w-full overflow-hidden rounded-full bg-linear-to-r from-pink-600 to-orange-500 px-6 py-4 text-base font-semibold text-white opacity-90 shadow-[0_0_20px_rgba(255,60,120,0.35)] transition-transform enabled:hover:scale-105 disabled:cursor-not-allowed"
+          disabled={!formData.birthPlace}
+          className={`relative w-full select-none overflow-hidden rounded-full px-6 py-4 text-base font-semibold text-white shadow-[0_0_20px_rgba(255,60,120,0.35)] transition-transform ${
+            formData.birthPlace
+              ? "cursor-pointer bg-linear-to-r from-pink-600 to-orange-500 hover:scale-105"
+              : "cursor-not-allowed bg-linear-to-r from-pink-600 to-orange-500 opacity-90"
+          }`}
         >
           <span
             aria-hidden="true"
             className="pointer-events-none absolute inset-y-0 -left-3/4 w-1/2 -skew-x-12 bg-linear-to-r from-transparent via-white/55 to-transparent animate-[cta-shine_2.8s_ease-in-out_infinite]"
           />
-          <span className="relative">Select birth city to continue</span>
+          <span className="relative select-none">
+            {formData.birthPlace
+              ? "Get your Kundli"
+              : "Select birth city to continue"}
+          </span>
         </button>
       </div>
     </div>
