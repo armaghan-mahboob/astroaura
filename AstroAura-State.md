@@ -2,7 +2,7 @@
 
 ## Status
 
-Landing page complete (Hero → Footer). AI Chatbot feature complete and deployed live. Responsive mobile navbar added. Hero background + Planets responsive behavior fixed.
+Landing page complete (Hero → Footer). AI Chatbot feature complete and deployed live. Responsive mobile navbar added. Hero background + Planets responsive behavior fixed. Tarot section reading flow (pick → reveal full reading in-place) complete.
 
 ## Completed
 
@@ -24,10 +24,11 @@ Landing page complete (Hero → Footer). AI Chatbot feature complete and deploye
 - Responsive mobile/tablet navbar with slide-out drawer
 - React Router added; landing page moved to `Chat.jsx`'s sibling route
 - AI Chatbot (`/chat` route) — full serverless backend + UI, wired to all "Ask"/"Ask AI" buttons site-wide
+- Tarot reading flow: pick 3 cards → "Get free reading" swaps the selected card slots from short meaning to full per-position reading (Past/Present/Future) in place, then shows the Together summary + "Draw new cards" + "Know more" CTAs
 
 ## Current
 
-Full landing page order finished. AI Chatbot live on production (`/chat`), backed by a Vercel serverless function calling Google Gemini. All "Ask Aura AI" CTAs across the site (Navbar desktop/mobile, LeftHero, FeatureCarousel) navigate to `/chat`. Logo navigation bug (broken `<a href="#">` not intercepted by router) fixed.
+Full landing page order finished. AI Chatbot live on production (`/chat`), backed by a Vercel serverless function calling Google Gemini. All "Ask Aura AI" CTAs across the site (Navbar desktop/mobile, LeftHero, FeatureCarousel) navigate to `/chat`. Logo navigation bug (broken `<a href="#">` not intercepted by router) fixed. Tarot "Get free reading" now morphs the existing three selected card slots into their full readings instead of rendering a duplicate reading card grid below.
 
 ## Next
 
@@ -58,6 +59,15 @@ None.
 - Tarot data lives in src/data/tarotCards.js.
 - Tarot selection state is an ordered `{ id, reversed }` array mapped to Past/Present/Future.
 - Reversed cards affect badge/meaning only; images are never rotated.
+- Tarot card slots have two layouts inside the same `CardSlot` component: the original compact meaning layout (image + label + name + short meaning) and a reading layout (stacked, centered, full reading text). The `showReading` flag toggles between them; no separate reading-card component is rendered.
+- `CardSlot` receives `showReading` and `position` props; when `showReading` is true it swaps the short meaning for `getCardReading(selection, position)`.
+- The standalone `ReadingCard` component was removed; readings now render inside the existing three selected card slots.
+- `TarotReading` only contains the Together summary, "Draw new cards" block, and "Know more" block — no duplicate card grid.
+- "Get free reading" toggles `showReading`; the deck and the TarotActions bar disappear, and the three selected slots morph into their full readings in place.
+- "Shuffle Again" / "Draw new cards" both reset `selected` and `showReading`, returning to the deck view.
+- Card selection is locked once `showReading` is true (`handleToggle` early-returns).
+- Together container, "Want another reading?" container, and "Know about your future…" container use inline-style → Tailwind arbitrary-value translations for their gradients/borders (no new utility layer added).
+- "Know more" CTA is now a `<Link to="/chat">` (react-router-dom), matching the site-wide Ask Aura AI CTA pattern.
 - Kundli.jsx contains its related subcomponents in one file.
 - Kundli uses custom dropdowns instead of native select.
 - Saved Kundli currently has no persistence.
